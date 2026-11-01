@@ -1,3 +1,29 @@
+// Sticky header position on page scrolling up
+const header = document.querySelector('.js-header');
+const stickyClass = 'sticky';
+let lastScrollTop = 0;
+let isWaiting = false;
+
+window.addEventListener('scroll', () => {
+    if (!isWaiting) {
+        window.requestAnimationFrame(() => {
+            let currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                header.classList.remove(stickyClass);
+            } else if (currentScroll < lastScrollTop && currentScroll > 0) {
+                header.classList.add(stickyClass);
+            } else if (currentScroll <= 0) {
+                header.classList.remove(stickyClass);
+            }
+
+            lastScrollTop = currentScroll;
+            isWaiting = false;
+        });
+        isWaiting = true;
+    }
+}, false);
+
 // Dropdown menu
 (function (menuConfig) {
   /**
@@ -20,7 +46,8 @@
     mobileMenuSidebarLogoUrl: null,
     relatedContainerForOverlayMenuSelector: null,
     // attributes 
-    ariaButtonAttribute: 'aria-haspopup',
+    ariaButtonAttribute: 'aria-expanded',
+    mobileMenuId: 'js-navbar-mobile',
     // CSS classes
     separatorItemClass: 'is-separator',
     parentItemClass: 'has-submenu',
@@ -276,6 +303,8 @@
     }
 
     initClosingMenuOnClickLink();
+    initMobileMenuEscape();
+    initMobileMenuFocusLeave();
 
     if (!config.isHoverMenu) {
       initAriaAttributes();
@@ -334,8 +363,79 @@ function initSubmenuPositions() {
   /**
    * Function used to init mobile menu - overlay mode
    */
+  /**
+   * The mobile menu (overlay or sidebar) is a copy of the header menu appended to the body, so it
+   * gets its own landmark: a nav named by the toggle that opens it (its aria-label, "Menu"); the
+   * template names the header nav differently ("Main navigation"), so the two landmarks stay
+   * distinct while the menu is open. While closed it is inert, out of reach of
+   * the keyboard and the screen reader whatever the theme's CSS does to hide it; the toggle points
+   * at it (aria-controls, aria-expanded); opening moves the focus to its first item, Escape
+   * closes it and gives the focus back to the toggle, and the focus leaving it (Tab past the last
+   * item, to anything but the toggle) closes it too, so nobody tabs on under the overlay.
+   */
+  function prepareMobileMenu(menuWrapper, button) {
+    var headerNav = document.querySelector(config.wrapperSelector);
+    var label = (button && button.getAttribute('aria-label')) || (headerNav && headerNav.getAttribute('aria-label')) || 'Menu';
+    var withId = menuWrapper.querySelectorAll('[id]');
+
+    for (var i = 0; i < withId.length; i++) {
+      withId[i].removeAttribute('id');
+    }
+
+    menuWrapper.id = config.mobileMenuId;
+    menuWrapper.setAttribute('aria-label', label);
+    menuWrapper.inert = true;
+
+    if (button) {
+      button.setAttribute('aria-controls', config.mobileMenuId);
+      button.setAttribute(config.ariaButtonAttribute, 'false');
+    }
+  }
+
+  function setMobileMenuOpen(menuWrapper, open) {
+    menuWrapper.inert = !open;
+
+    if (open) {
+      var first = menuWrapper.querySelector('a[href], button, [role="button"][tabindex]');
+
+      if (first) {
+        first.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  function initMobileMenuEscape() {
+    document.addEventListener('keydown', function (e) {
+      var button = document.querySelector(config.buttonSelector);
+
+      if (e.key !== 'Escape' || !button || !button.classList.contains(config.openedMenuClass)) {
+        return;
+      }
+
+      closeMenu(null, true);
+      button.focus();
+    });
+  }
+
+  function initMobileMenuFocusLeave() {
+    document.addEventListener('focusin', function (e) {
+      var button = document.querySelector(config.buttonSelector);
+      var menuWrapper = document.getElementById(config.mobileMenuId);
+
+      if (!button || !menuWrapper || !button.classList.contains(config.openedMenuClass)) {
+        return;
+      }
+
+      if (menuWrapper.contains(e.target) || button.contains(e.target)) {
+        return;
+      }
+
+      closeMenu(null, true);
+    });
+  }
+
   function initMobileMenuOverlay() {
-    var menuWrapper = document.createElement('div');
+    var menuWrapper = document.createElement('nav');
     menuWrapper.classList.add(config.mobileMenuOverlayClass);
     menuWrapper.classList.add(config.hiddenElementClass);
     var menuContentHTML = document.querySelector(config.menuSelector).outerHTML;
@@ -352,12 +452,14 @@ function initSubmenuPositions() {
 
     // Init button events
     var button = document.querySelector(config.buttonSelector);
+    prepareMobileMenu(menuWrapper, button);
 
     button.addEventListener('click', function () {
       var relatedContainer = document.querySelector(config.relatedContainerForOverlayMenuSelector);
       menuWrapper.classList.toggle(config.hiddenElementClass);
       button.classList.toggle(config.openedMenuClass);
       button.setAttribute(config.ariaButtonAttribute, button.classList.contains(config.openedMenuClass));
+      setMobileMenuOpen(menuWrapper, button.classList.contains(config.openedMenuClass));
 
       if (button.classList.contains(config.openedMenuClass)) {
         document.documentElement.classList.add(config.noScrollClass);
@@ -380,7 +482,7 @@ function initSubmenuPositions() {
    */
   function initMobileMenuSidebar() {
     // Create menu structure
-    var menuWrapper = document.createElement('div');
+    var menuWrapper = document.createElement('nav');
     menuWrapper.classList.add(config.mobileMenuSidebarClass);
     menuWrapper.classList.add(config.hiddenElementClass);
     var menuContentHTML = '';
@@ -420,10 +522,12 @@ function initSubmenuPositions() {
       button.classList.remove(config.openedMenuClass);
       button.setAttribute(config.ariaButtonAttribute, false);
       document.documentElement.classList.remove(config.noScrollClass);
+      setMobileMenuOpen(menuWrapper, false);
     });
 
     // Init button events
     var button = document.querySelector(config.buttonSelector);
+    prepareMobileMenu(menuWrapper, button);
 
     button.addEventListener('click', function () {
       menuWrapper.classList.toggle(config.hiddenElementClass);
@@ -431,6 +535,7 @@ function initSubmenuPositions() {
       button.classList.toggle(config.openedMenuClass);
       button.setAttribute(config.ariaButtonAttribute, button.classList.contains(config.openedMenuClass));
       document.documentElement.classList.toggle(config.noScrollClass);
+      setMobileMenuOpen(menuWrapper, button.classList.contains(config.openedMenuClass));
     });
   }
 
@@ -592,6 +697,7 @@ function initSubmenuPositions() {
     button.classList.remove(config.openedMenuClass);
     button.setAttribute(config.ariaButtonAttribute, false);
     document.documentElement.classList.remove(config.noScrollClass);
+    setMobileMenuOpen(menuWrapper, false);
 
     if (relatedContainer) {
       relatedContainer.classList.remove(config.relatedContainerForOverlayMenuClass);
@@ -610,159 +716,27 @@ function initSubmenuPositions() {
   init();
 })(window.publiiThemeMenuConfig);
 
-// Back to top 
-const backToTopButton = document.getElementById("backToTop");
-
-if (backToTopButton) {
-    window.addEventListener('scroll', () => {
-        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-            backToTopButton.classList.add("is-visible");
-        } else {
-            backToTopButton.classList.remove("is-visible");
-        }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-/**
- * Responsive embeds script
- */
- (function () {
-	let wrappers = document.querySelectorAll('.post__video, .post__iframe');
-
-	for (let i = 0; i < wrappers.length; i++) {
-		let embed = wrappers[i].querySelector('iframe, embed, video, object');
-
-		if (!embed) {
-			continue;
-		}
-
-        if (embed.getAttribute('data-responsive') === 'false') {
-            continue;
-        }
-
-		let w = embed.getAttribute('width');
-		let h = embed.getAttribute('height');
-		let ratio = false;
-
-		if (!w || !h) {
-			continue;
-		}
-		
-		if (w.indexOf('%') > -1 && h.indexOf('%') > -1) { // percentage mode
-			w = parseFloat(w.replace('%', ''));
-			h = parseFloat(h.replace('%', ''));
-			ratio = h / w;
-		} else if (w.indexOf('%') === -1 && h.indexOf('%') === -1) { // pixels mode
-			w = parseInt(w, 10);
-			h = parseInt(h, 10);
-			ratio = h / w;
-		}
-
-		if (ratio !== false) {
-			let ratioValue = (ratio * 100) + '%';
-			wrappers[i].setAttribute('style', '--embed-aspect-ratio:' + ratioValue);
-		}
-	}
-})();
-
-// Share buttons pop-up
-(function () {
-	// share popup
-	const shareButton = document.querySelector('.js-content__share-button');
-	const sharePopup = document.querySelector('.js-content__share-popup');
-
-	if (shareButton && sharePopup) {
-		 sharePopup.addEventListener('click', function (e) {
-			  e.stopPropagation();
-		 });
-
-		 shareButton.addEventListener('click', function (e) {
-			  e.preventDefault();
-			  e.stopPropagation();
-			  sharePopup.classList.toggle('is-visible');
-		 });
-
-		 document.body.addEventListener('click', function () {
-			  sharePopup.classList.remove('is-visible');
-		 });
-	}
-
-	// link selector and pop-up window size
-	const Config = {
-		 Link: ".js-share",
-		 Width: 500,
-		 Height: 500
-	};
-
-	// add handler to links
-	const shareLinks = document.querySelectorAll(Config.Link);
-	shareLinks.forEach(link => {
-		 link.addEventListener('click', PopupHandler);
-	});
-
-	// create popup
-	function PopupHandler(e) {
-		 e.preventDefault();
-
-		 const target = e.target.closest(Config.Link);
-		 if (!target) return;
-
-		 // hide share popup
-		 if (sharePopup) {
-			  sharePopup.classList.remove('is-visible');
-		 }
-
-		 // popup position
-		 const px = Math.floor((window.innerWidth - Config.Width) / 2);
-		 const py = Math.floor((window.innerHeight - Config.Height) / 2);
-
-		 // open popup
-		 const linkHref = target.href;
-		 const popup = window.open(linkHref, "social", `
-			  width=${Config.Width},
-			  height=${Config.Height},
-			  left=${px},
-			  top=${py},
-			  location=0,
-			  menubar=0,
-			  toolbar=0,
-			  status=0,
-			  scrollbars=1,
-			  resizable=1
-		 `);
-
-		 if (popup) {
-			  popup.focus();
-		 }
-	}
-})();
-
-
-// Search
+// Load search input area
 const searchButton = document.querySelector('.js-search-btn');
 const searchOverlay = document.querySelector('.js-search-overlay');
-const searchInput = document.querySelector('.search__input');
 
 if (searchButton && searchOverlay) {
-    searchButton.addEventListener('click', (e) => {
-        e.stopPropagation();
+    searchButton.addEventListener('click', (event) => {
+        event.stopPropagation();
         searchOverlay.classList.toggle('expanded');
 
-        if (searchInput) {
+        if (searchOverlay.classList.contains('expanded')) {
             setTimeout(() => {
-                if (searchOverlay.classList.contains('expanded')) {
-                    searchInput.focus();
+                const element = searchOverlay.querySelector('input, button');
+                if (element) {
+                    element.focus();
                 }
             }, 60);
         }
     });
 
-    searchOverlay.addEventListener('click', (e) => {
-        e.stopPropagation();
+    searchOverlay.addEventListener('click', (event) => {
+        event.stopPropagation();
     });
 
     document.body.addEventListener('click', () => {
@@ -770,87 +744,141 @@ if (searchButton && searchOverlay) {
     });
 }
 
-/**
- * Layout switcher
- */
- (function () {
-   let layoutButtons = document.querySelectorAll('.switchers__item');
-   let contentWrapper = document.querySelector('.l-grid');
-   let articles;
 
-   if (contentWrapper) {
-      articles = contentWrapper.querySelectorAll('.c-card');
-   }
+// Share buttons pop-up
+(function () {
+    // share popup
+    const shareButton = document.querySelector('.js-content__share-button');
+    const sharePopup = document.querySelector('.js-content__share-popup');
 
-   if (!contentWrapper || !layoutButtons.length || (articles && !articles.length)) {
-      return;
-   }
+    if (shareButton && sharePopup) {
+        sharePopup.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
 
-   let gridBtn = layoutButtons[0];
-   let rowsBtn = layoutButtons[1];
+        shareButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            sharePopup.classList.toggle('is-visible');
+        });
 
-   gridBtn.addEventListener('click', e => {
-      e.preventDefault();
-      if (!gridBtn.classList.contains('is-active')) {
-         setGridLayout();
-      }
-   });
+        document.body.addEventListener('click', function () {
+            sharePopup.classList.remove('is-visible');
+        });
+    }
 
-   rowsBtn.addEventListener('click', e => {
-      e.preventDefault();
-      if (!rowsBtn.classList.contains('is-active')) {
-         setRowsLayout();
-      }
-   });
+    // link selector and pop-up window size
+    const Config = {
+        Link: ".js-share",
+        Width: 500,
+        Height: 500
+    };
 
-   function setGridLayout () {
-      gridBtn.classList.add('is-active');
-      rowsBtn.classList.remove('is-active');
-      gridBtn.setAttribute('aria-pressed', 'true');
-      rowsBtn.setAttribute('aria-pressed', 'false');
-      contentWrapper.classList.remove('l-grid--1');
-      articles = contentWrapper.querySelectorAll('.c-card');
-      for (let i = 0; i < articles.length; i++) {
-         articles[i].classList.remove('c-card--rows');
-      }
-      localStorage.setItem('persona-theme-selected-layout', 'grid');	
-      resetIsotopeLayout();
-   }
+    // add handler to links
+    const shareLinks = document.querySelectorAll(Config.Link);
+    shareLinks.forEach(link => {
+        link.addEventListener('click', PopupHandler);
+    });
 
-   function setRowsLayout () {
-      gridBtn.classList.remove('is-active');
-      rowsBtn.classList.add('is-active');
-      gridBtn.setAttribute('aria-pressed', 'false');
-      rowsBtn.setAttribute('aria-pressed', 'true');
-      contentWrapper.classList.add('l-grid--1');
-      articles = contentWrapper.querySelectorAll('.c-card');
-      for (let i = 0; i < articles.length; i++) {
-         articles[i].classList.add('c-card--rows');
-      }
-      localStorage.setItem('persona-theme-selected-layout', 'rows');
-      resetIsotopeLayout();
-   }
+    // create popup
+    function PopupHandler(e) {
+        e.preventDefault();
 
-   function resetIsotopeLayout () {
-      if (window.personaThemeIsotopeInstance) {
-         if (document.querySelector('.filter__item.is-active')) {
-            window.personaThemeIsotopeInstance.arrange({
-               filter: document.querySelector('.filter__item.is-active').getAttribute('data-filter')
+        const target = e.target.closest(Config.Link);
+        if (!target) return;
+
+        // hide share popup
+        if (sharePopup) {
+            sharePopup.classList.remove('is-visible');
+        }
+
+        // popup position
+        const px = Math.floor((window.innerWidth - Config.Width) / 2);
+        const py = Math.floor((window.innerHeight - Config.Height) / 2);
+
+        // open popup
+        const linkHref = target.href;
+        const popup = window.open(linkHref, "social", `
+            width=${Config.Width},
+            height=${Config.Height},
+            left=${px},
+            top=${py},
+            location=0,
+            menubar=0,
+            toolbar=0,
+            status=0,
+            scrollbars=1,
+            resizable=1
+        `);
+
+        if (popup) {
+            popup.focus();
+        }
+    }
+})();
+
+// Back to top
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('backToTop');
+
+    if (backToTopButton) {
+        const backToTopScrollFunction = () => {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                backToTopButton.classList.add('is-visible');
+            } else {
+                backToTopButton.classList.remove('is-visible');
+            }
+        };
+
+        const backToTopFunction = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-         } else {
-            window.personaThemeIsotopeInstance.arrange();
-         }
-      }
-   }
+        };
 
-   window.addEventListener("DOMContentLoaded", function () {
-      setTimeout(() => {
-         let savedLayout = localStorage.getItem('persona-theme-selected-layout');
-         if (savedLayout === 'grid' || !savedLayout) {
-            setGridLayout();
-         } else if (savedLayout === 'rows') {
-            setRowsLayout();
-         }
-      }, 0);
-   });
+        window.addEventListener('scroll', backToTopScrollFunction);
+        backToTopButton.addEventListener('click', backToTopFunction);
+    }
+});
+
+
+// Responsive embeds script
+(function () {
+    let wrappers = document.querySelectorAll('.post__video, .post__iframe');
+
+    for (let i = 0; i < wrappers.length; i++) {
+        let embed = wrappers[i].querySelector('iframe, embed, video, object');
+
+        if (!embed) {
+            continue;
+        }
+
+        if (embed.getAttribute('data-responsive') === 'false') {
+            continue;
+        }
+
+        let w = embed.getAttribute('width');
+        let h = embed.getAttribute('height');
+        let ratio = false;
+
+        if (!w || !h) {
+            continue;
+        }
+
+        if (w.indexOf('%') > -1 && h.indexOf('%') > -1) { // percentage mode
+            w = parseFloat(w.replace('%', ''));
+            h = parseFloat(h.replace('%', ''));
+            ratio = h / w;
+        } else if (w.indexOf('%') === -1 && h.indexOf('%') === -1) { // pixels mode
+            w = parseInt(w, 10);
+            h = parseInt(h, 10);
+            ratio = h / w;
+        }
+
+        if (ratio !== false) {
+            let ratioValue = (ratio * 100) + '%';
+            wrappers[i].setAttribute('style', '--embed-aspect-ratio:' + ratioValue);
+        }
+    }
 })();
