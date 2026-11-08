@@ -1,0 +1,183 @@
+# Jeffrey Jay Mayo | Virtual Assistant & Automation Specialist
+
+> Jeffrey Jay Mayo, who goes by Jay, is a virtual assistant and automation specialist in the Philippines. He builds no-code workflow automations and handles inbox, calendar, and other admin work for founders, entrepreneurs, and solopreneurs. Automation is his primary service, operations and admin support is secondary, and content moderation (trust and safety) is a specialized service. Before going independent, he spent almost 3 years in workforce management and trust and safety at Accenture.
+
+Last updated: 2026-11-08. If this file and the website differ, the website is correct.
+
+- Website: https://thejeffreyjay.github.io/
+- Location and time zone: Philippines, UTC+8
+- Working hours: 10 PM to 10 AM Philippine time, which covers US daytime and the Australian morning. He can discuss adjustments based on the client's timeline.
+- Availability: open to new clients from any country
+- Work setup: MacBook Air M4 with 16 GB RAM as the main computer, a Windows 11 laptop (Core i5, 16 GB RAM) as backup, and high-speed internet with a mobile data backup
+- Sample works: all are mock projects built with simulated data. No real client information or sensitive corporate data is shown.
+
+## Site pages
+
+- [Home and services](https://thejeffreyjay.github.io/): Introduction, automation services, and operations and admin services
+- [Sample works](https://thejeffreyjay.github.io/sample-works/): Ten mock workflows with video walkthroughs, how he builds automations, how he handles data, and six operations and admin case studies
+- [Background](https://thejeffreyjay.github.io/background/): Work history, recognition, certifications, and education
+- [Automation rates](https://thejeffreyjay.github.io/service-rates/automation/): Ongoing support, project prices, maintenance, and billing terms
+- [Admin and trust and safety rates](https://thejeffreyjay.github.io/service-rates/admin/): Hourly admin support and trust and safety quotes
+- [Contact](https://thejeffreyjay.github.io/contact-me/): Contact details and answers to common questions
+- [Resume](https://thejeffreyjay.github.io/resume/): PDF resume
+
+## Services
+
+**AI and workflow automation (primary service)**
+
+- Email Triage & Draft Replies: Incoming emails are labeled and summarized, and a draft reply is saved for approval. Urgent emails trigger an alert. Reply rules are kept in a spreadsheet.
+- Lead Capture, Scoring & CRM Setup: Booking tools and forms are connected to a CRM or spreadsheet. Each new booking is logged, the lead receives a welcome email, and an alert is sent. AI scores each lead from the booking form answers, and high-scoring leads are marked as priority.
+- AI Agentic Workflows: AI assistants talk with customers, answer questions from the business's own documents, validate contact details, and route qualified consultation requests.
+- Finance & Compliance Automations: Incoming documents are processed and checked against compliance rules using AI. Tasks are assigned and draft messages are prepared based on custom risk criteria.
+- Reports & Data Logging: Each new booking is logged in a spreadsheet. A weekly summary reports total bookings, high-priority bookings, and the average lead score.
+- AI Content Repurposing: New material from RSS feeds, blogs, and podcasts is turned into social posts for each platform using AI, then distributed across channels.
+- Order, Booking & Form Alerts: New orders, bookings, and form responses send an alert to the right person or team channel as they happen. For online stores, customers also receive an emailed receipt.
+- Pre-Call Briefs: AI writes a short brief for each booked call, covering what the person needs and what to prepare. The brief is sent as a chat message and saved in a spreadsheet.
+- Session & Call Reminders: Clients receive an email reminder at a set time before each booked session or call. The reminder can include what to prepare.
+- Website Uptime & Health Monitoring: A live website is checked daily for errors. Status reports and urgent down alerts are sent to the team's message channels.
+
+**Operations and admin (secondary service)**
+
+- Inbox Management: Sorts email by priority, flags urgent messages, clears spam, and drafts replies for review, to an Inbox Zero standard.
+- Calendar Management: Books and reschedules meetings, resolves time zone conflicts, adds buffer time between calls, sends reminders, and keeps the schedule free of conflicts.
+- Data Entry & Reporting: Cleans up and updates databases and spreadsheets, standardizes tags, organizes cloud folders, and prepares summary reports.
+- File Management: Organizes cloud storage folders, sets consistent naming conventions, archives outdated records, and structures documents so files are easy to find.
+- No-Code Website Setup: Sets up simple websites and landing pages with embedded booking links and intake or feedback forms to capture leads.
+
+**Specialized service**
+
+- Content Moderation: Reviews submissions, user-generated content, posts, and appeals for policy compliance, escalates urgent cases, and tracks requests in a ticketing system.
+
+## Rates
+
+All prices are in US dollars. Details are on the [automation rates](https://thejeffreyjay.github.io/service-rates/automation/) and [admin rates](https://thejeffreyjay.github.io/service-rates/admin/) pages.
+
+**Automation (primary service)**
+
+- Ongoing VA & automation support: $10 to $12 per hour. Part-time is 20 or 30 hours per week. Full-time is 40 hours per week. Scope can include workflow development and maintenance, API integrations, automation troubleshooting, inbox and calendar management, data entry and reporting, admin and operational support, and process updates and documentation. Working hours, responsibilities, and deliverables are agreed before the engagement begins.
+- Starter Automation: from $150 one-time. For simple workflows with basic triggers, actions, and app integrations. Includes workflow setup, basic input validation, error notifications where applicable, testing with sample data, and a video walkthrough and handover.
+- Standard Automation: from $300 one-time. For workflows with multiple apps, conditional logic, API integrations, and more detailed processing. Includes workflow development, app and API integrations, validation and error handling where applicable, testing with sample data, documentation, and a video walkthrough and handover.
+- Advanced Automation: custom quotation. For multiple interconnected workflows, complex integrations, AI-assisted processing, or specialized requirements. The price is set after reviewing scope, integrations, development needs, and testing needs.
+- Workflow Maintenance & Technical Support: $125 per month for up to 5 support hours, for businesses that already have an automation in place. Covers reviewing reported errors and failed executions, correcting minor issues, reviewing execution logs, updating nodes, conditions, and data mappings, testing affected steps after changes, and a monthly activity summary. Extra hours are $25 per hour with client approval. Unused hours expire at the end of each billing cycle.
+- How projects work: each automation project starts with a discussion of the current process, requirements, and expected outcome. A scope, deliverables, estimated timeline, and quotation are sent before development begins. A project ends after the agreed deliverables are completed, tested, and handed over.
+- Not included: third-party subscriptions, software licenses, hosting, databases, premium integrations, AI model credits, and API usage fees. The client pays for these directly and should register the accounts under the client's own name.
+
+**Operations and admin (secondary service)**
+
+- Administrative & operations support: $7 per hour. Covers the operations and admin services above plus general administrative support. Available part-time, full-time, or by project.
+- Trust & safety (content moderation) support: custom quotation, based on the platform's policies, moderation guidelines, review volume, and escalation requirements. Available by project or on an ongoing basis.
+
+## Sample works
+
+Ten mock workflows, each with a video walkthrough, on the [sample works page](https://thejeffreyjay.github.io/sample-works/). Seven are built in n8n (self-hosted), two in Make, and one in Zapier.
+
+- **E-Commerce AI Order Assistant**, for D2C online pet supplies and retail. [Video](https://www.loom.com/embed/fb4dcf1a2b7d41358a1abe29c60458a6)
+  - Service: AI Agentic Workflows. Platform: n8n (self-hosted), Gemini, Webhook, Google Sheets, Google Docs, Slack.
+  - A chat agent answers product and policy questions, looks up live inventory, and requires a two-step confirmation before an order is processed. It validates customer contact details, updates inventory, logs completed orders in a master spreadsheet, and sends Slack alerts.
+  - Result: in testing, an order for 3 units showed 3 in the chat summary but was logged and sent to Slack as 1. After the fix, the quantity matches in the chat summary, the spreadsheet, and the Slack alert. Checked with 10 test orders.
+- **AI Lead Scoring & Pre-Call Briefing**, for B2B coaching clients. [Video](https://www.loom.com/embed/39dfa12a1ec841a088253d14a63d8ba1)
+  - Services: Lead Capture, Scoring & CRM Setup, Pre-Call Briefs, Session & Call Reminders, and Reports & Data Logging. Platform: n8n (self-hosted), Cal.com, Groq, Google Sheets, Telegram, Gmail.
+  - Catches new Cal.com consultation bookings and scores each lead from 0 to 100 using the form responses. It writes a short summary with pre-call action items, sends Telegram notifications based on revenue tier, sends confirmation and timed reminder emails, and logs the data in a master tracking sheet.
+- **Financial Contract Risk & Compliance Screener**, for finance and procurement operations. [Video](https://www.loom.com/embed/96d2ca4e183c4bd3bfcd925a652ff128)
+  - Service: Finance & Compliance Automations. Platform: n8n (self-hosted), Google Drive, OpenRouter, Gmail, Asana, Slack.
+  - Watches a Google Drive folder for new contract PDFs, extracts the text, and rates the risk as High, Medium, or Low. High-risk contracts get a drafted renegotiation email in Gmail, a priority Asana task, and a Slack alert. Medium-risk contracts get a review task and a Slack alert. Low-risk contracts are logged without alerts.
+  - Result: screening now covers 6 contract types instead of 1 (statements of work, vendor agreements, master services agreements, service contracts, NDAs, and commercial lease agreements). Checked with 12 sample contracts.
+- **Multi-Channel Social Repurposing Engine**, for tech content creators. [Video](https://www.loom.com/embed/d9df5c54cf954b8a825a6efe4d93c63a)
+  - Service: AI Content Repurposing. Platform: n8n (self-hosted), Groq, Google Drive, Telegram, Discord, LinkedIn, Slack.
+  - Monitors several tech RSS feeds, normalizes the data, and has Groq write a post for each platform. It saves a Markdown copy to Google Drive, posts to Telegram, Discord, and LinkedIn, and sends failure alerts to Slack.
+- **AI Customer Support & CRM Bot**, for home decor and furniture stores. [Video](https://www.loom.com/embed/b5081c4acbde427499760f896c4e9f74)
+  - Services: AI Agentic Workflows and Lead Capture, Scoring & CRM Setup. Platform: n8n (self-hosted), Gemini, HubSpot, Notion, Slack, Gmail.
+  - An AI agent with chat memory answers FAQ and policy questions from a Notion database. When a customer submits a valid email with a consultation request, the lead is logged in HubSpot and alerts go to Slack and Gmail.
+- **GitHub Page Daily Health Check & Telegram Alert**, for a website hosted on GitHub Pages. [Video](https://www.loom.com/embed/6c82bc2042d34d59b9d988b4977225b4)
+  - Service: Website Uptime & Health Monitoring. Platform: n8n (self-hosted), GitHub, Telegram.
+  - Checks a live GitHub Pages URL every morning at 9:00 AM, reads the repository metadata, and checks the HTTP status code. It sends a daily health report to Telegram, or an error alert with details if the site is down.
+- **Order Alerts & Customer Receipts**, for online retail stores. [Video](https://www.loom.com/embed/5753ab868e814cc4b2cd9a2ef06c9a9f)
+  - Service: Order, Booking & Form Alerts. Platform: n8n (self-hosted), Slack, Gmail API.
+  - Catches new orders when they are placed, formats multi-item purchases, sends a detailed team alert to Slack, and emails a custom-styled receipt to the customer.
+- **Executive AI Inbox Assistant**, for a personal Gmail inbox. [Video](https://www.loom.com/embed/c1d1c949139a475885d77660ec585293)
+  - Service: Email Triage & Draft Replies. Platform: Make, Gmail, Groq, Google Sheets, Slack.
+  - Scans, labels, and summarizes incoming email. A rulebook in Google Sheets guides the draft replies, which are saved in Gmail Drafts for approval. Newsletters and noise are hidden, and Slack alerts go out for priority emails.
+- **Automated Feedback Form Alerts**, for agencies and freelance consultants. [Video](https://www.loom.com/embed/a2e5dba0c75147c1905783ed68754d2c)
+  - Service: Order, Booking & Form Alerts. Platform: Make, Google Forms, Google Sheets, Webhook, Groq, Slack.
+  - Logs each form response in a master tracker, has AI rate the sentiment, and routes the response to Slack channels by score and urgency. Negative feedback alerts management in under 3 seconds, and positive reviews are shared with the team.
+- **7-Step Lead Onboarding & CRM**, for B2B consultants and agency owners. [Video](https://www.loom.com/embed/65b41ae4e24b48daa32a26995f555541)
+  - Service: Lead Capture, Scoring & CRM Setup. Platform: Zapier, Cal.com, Airtable, AI by Zapier, Gmail, Slack.
+  - When a lead books a call on Cal.com, the lead's details are logged in Airtable, messy timestamps are cleaned up, an AI-personalized welcome email is sent from Gmail, and the team is alerted in Slack.
+
+## Operations and admin case studies
+
+- [Operations & Admin Case Study (PDF on Google Drive)](https://drive.google.com/file/d/1H7LQOYIBOOHB8EAIbvttE0C1aNcaenPx/view?usp=sharing): Six cases for the operations and admin services. Cases 01 to 05 use simulated data for invented clients. Case 06 is his own website. Tools used: Gmail, Google Calendar, Google Drive, Google Sheets, MailerLite, Cal.com, Tally.
+  - 01. Email management for a personal Gmail inbox: brought a 235-email inbox to Inbox Zero with 7 labels, filters, and separate panels for urgent, follow-up, awaiting-response, and FYI mail.
+  - 02. Calendar management for a small apparel business: built a one-week schedule from 7 color-coded calendars, with 60+ entries, no overlaps, prep time, time blocks, and a notes buffer around 5 key meetings.
+  - 03. File management for a photography business: set up one shared folder with 9 main folders, one file name format, and access set by role.
+  - 04. Data entry for a mini convenience store: moved handwritten daily sales into a spreadsheet, with totals and profit calculated by formula from one price list.
+  - 05. Research for a small fragrance business: compared two products in a one-page write-up with a side-by-side notes table and a recommendation.
+  - 06. No-code website for a freelancer: built a 5-page MailerLite website.
+
+## How he builds and maintains automations
+
+- Input validation: required information is checked before a workflow continues. When customer details are incomplete, the automation can ask for the missing information.
+- Human approval: AI-generated output can be reviewed and approved before it is sent or used in later steps.
+- Duplicate prevention: unique IDs from connected databases or CRMs are checked for existing records before new entries are created.
+- Error notifications: failed workflows can send a notification through Slack or Telegram. Failed executions are then inspected manually. Automatic retries or recovery are not guaranteed.
+- Testing and troubleshooting: he tests workflows, inspects failed executions, fixes the issues found, and manually reruns affected operations when needed.
+- Maintenance: when business requirements change, he updates the affected steps, tests the changes, and records important revisions in a changelog.
+
+## How he handles data
+
+- He works inside the client's accounts with only the access the build needs. The client can revoke access at any time.
+- API keys and logins stay in each tool's connection settings, never in a workflow, chat, or email.
+- Each step receives only the data it needs. He says which steps send text to an AI model before turning them on.
+- Names, emails, and phone numbers are not removed before text reaches an AI model unless that is set up. He can add that step for sensitive data.
+- n8n can run on the client's own server. The AI model still receives the text it works on.
+- He is not SOC 2 certified. For work under HIPAA or a similar rule, he asks to be told first so the tools can be checked.
+- Links to AI provider, automation platform, and app data policies are on the sample works page, with a last-checked date of October 2026.
+
+## Background
+
+**Work history**
+
+- Independent Automation Projects (self-employed), Jan 2026 to present. Virtual Assistant & Automation Specialist. Built the automation prototypes and the admin case studies, set up this website with booking, intake, onboarding, and feedback forms, and wrote a contractor agreement, SOPs, and more.
+- Accenture, Oct 2022 to Jul 2025. Tools: Google Workspace (Gmail, Sheets, Docs, Slides, Forms, Calendar, Drive, Meet, Keep, Chat, Gemini), internal workforce management and analytics platforms, CRM ticketing software, content moderation systems, and client-specific tools and databases.
+  - Workforce Management Apprentice, Customer Service: handled daily workforce operations for 100+ agents, including schedules, attendance tracking, and staffing. Monitored schedule adherence, resolved coverage gaps, sent callout alerts, and turned utilization, attendance, and billable-hour data into Google Sheets reports with formulas for weekly team lead meetings. Evaluated 40+ digital survey entries a day against content policies and data hygiene standards. Results: 100% payroll alignment with no errors flagged in the workforce reports. 100% QA score for 12 consecutive months, with no quality errors or client escalations. Endorsed by team leads for attention to detail and policy compliance, recognized as a top performer in leadership presentations, and selected as a priority candidate for a Policy Support role.
+  - Trust & Safety Content Analyst: reviewed apps and appeals for policy compliance. Checked 28+ app submissions and their metadata a day, reviewed Digital Services Act (DSA) appeals, resolved urgent, high-impact, and disputed cases and policy violations, and handled user and client expedite requests through a ticketing system. Results: 19 consecutive months with zero errors and zero client escalations. 1-hour turnaround on expedite requests, with zero expired requests and a 100% resolution rate. Mentored incoming agents on complex policy decisions and compliance guidelines, and served as the team's primary point of contact.
+  - Recognition: Top Performer for Q2 2023 and Q4 2023. Going Above & Beyond (Team Award). Best in Product Knowledge Test (PKT), January 2024, highest score (Team Award). Best in Attendance, January 2024 (Team Award), with perfect attendance and zero tardiness for the entire tenure.
+- Starbucks (Rustan Coffee Corporation), Mar 2020 to Jun 2021. Full-time barista. Audited daily inventory and weekly stock, and processed POS cash, card, and digital transactions accurately, including during high-volume peak hours.
+- GEOLINK Corporation, Jul 2012 to Jun 2015. AutoCAD operator. Converted raw survey data into 15+ 2D technical CAD drawings a day. A topographic plan earned executive recognition and appeared in the company's 2014 year-end calendar.
+
+**Certifications**
+
+- Make Academy: [Foundation](https://www.credly.com/badges/95bc4db1-de80-411f-ae62-98c869f5999d/public_url), [Basics](https://www.credly.com/badges/723459dc-3d4b-41c9-bcf6-8d14af325eb7/public_url), [Intermediate](https://www.credly.com/badges/27075299-7fc0-4274-b10b-013262498e95/public_url), [Advanced](https://www.credly.com/badges/6ef438d1-db30-4aac-ab54-b5f9ae372ca6/public_url)
+- Zapier Academy: AI Builder Path (Jumpstart, Building Basic Zaps, Building Intermediate Zaps), MCP Path (What is Zapier MCP?, Using Zapier MCP, Governing Zapier MCP), and Account Admin Essentials Path (Account Setup, Security and Governance, Monitoring and Operations)
+- HubSpot Academy: [Service Hub Software Certified](https://app-na2.hubspot.com/academy/achievements/c99wn9w3/en/1/jeffrey-jay-mayo/service-hub-software)
+- Grow with Google: [Google AI Essentials](https://www.coursera.org/account/accomplishments/specialization/certificate/7MWULA3JSTWO)
+
+**Education**
+
+- Polytechnic University of the Philippines, 2015 to 2019. Bachelor of Science in Hospitality Management. President's Lister in the first and second year. Class President, managing section needs and the logistics of school functions and events. Public Relations Officer for Publicity & Layouts in the Hospitality Management Society, 2016 to 2017.
+
+## Tools
+
+- Core operations and productivity: Google Workspace, Microsoft Office, Airtable, HubSpot, GitHub, Notion, Asana
+- Workflow automation: n8n, Make, Zapier, Power Automate
+- Communication, collaboration, and scheduling: Slack, Loom, Cal.com, Calendly
+- AI assistants and prompting: Claude, Gemini, ChatGPT, Copilot
+- Websites and design: MailerLite, WordPress, Canva
+
+## Contact and how to start
+
+- [Book a 30-minute discovery call](https://cal.com/jeffreyjay/30min)
+- [Email](mailto:thejeffreyjay@gmail.com): thejeffreyjay@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/thejeffreyjay/)
+- [OnlineJobs.ph profile](https://www.onlinejobs.ph/jobseekers/info/4846988)
+- [Upwork profile](https://www.upwork.com/freelancers/~0126e845f1f9ab0147?mp_source=share)
+- [Telegram](https://t.me/thejeffreyjay)
+
+Steps to start working together:
+
+1. Send an inquiry. Book a discovery call, or email the details first.
+2. Discovery call. Jay goes over the tasks to hand off, the tools already in use, and the start date, then says whether he can do the job and which option fits.
+3. Agreement and onboarding. The client signs a contractor agreement and fills out an onboarding form. He asks only for the access the job needs.
+4. Work and feedback. For builds, he tests the workflow and sends a video walkthrough. For admin work, he logs each task and sends an update daily and weekly by email or in the team chat.
+
+Anyone with a task they do by hand every week can send it over as a rough description. Jay will say whether it is worth automating and what it would take to start.
